@@ -10,6 +10,46 @@ There has been a lot of great research published on using LLMs for text to SQL (
 
 ## Headings
 
+```sql
+CREATE TABLE costumes (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  silliness INT,
+  monster INT,
+  last_updated TIMESTAMP
+);
+
+CREATE TABLE monsters (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  movie VARCHAR(255),
+  weight INT,
+  last_updated TIMESTAMP
+);
+
+ALTER TABLE costumes
+ADD FOREIGN KEY (monster) REFERENCES monsters (id);
+```
+
+```json
+costumes: {
+  shape: sql_table
+  id: int {constraint: primary_key}
+  silliness: int
+  monster: int
+  last_updated: timestamp
+}
+
+monsters: {
+  shape: sql_table
+  id: int {constraint: primary_key}
+  movie: string
+  weight: int
+  last_updated: timestamp
+}
+
+costumes.monster -> monsters.id
+
+```
+
 The following HTML `<h1>`—`<h6>` elements represent six levels of section headings. `<h1>` is the highest section level while `<h6>` is the lowest.
 
 # H1
